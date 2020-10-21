@@ -61,7 +61,7 @@ class Api::V1::UsersController < ApplicationController
     def set_user
       begin
         @user = User.find(params[:user_id])
-        render json: { user: user }, status: :ok
+        render json: { user: @user }, status: :ok
       rescue => e
         render json: { errors: e.message}, status: 404
       end
