@@ -8,8 +8,8 @@
   run bundle install
 
 * Database creation
+  on new repositoty change dabase name in database.yml
   run rails db:create
-
 
 * Database initialization
   run rails db:migrate
