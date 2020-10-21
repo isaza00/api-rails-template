@@ -8,8 +8,6 @@ class Api::V1::UsersController < ApplicationController
   # POST /login
   def login
     user = User.find_by(email: params[:email])
-    puts "________"
-    puts user
     if user && user.authenticate(params[:password])
       token = encode_token({user_id: user.id})
       render json: {user: user, token: token}, status: :ok
@@ -64,7 +62,7 @@ class Api::V1::UsersController < ApplicationController
       begin
         @user = User.find(params[:user_id])
         render json: { user: user }, status: :ok
-      rescue
+      rescue => e
         render json: { errors: e.message}, status: 404
       end
     end

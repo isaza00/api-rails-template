@@ -36,12 +36,12 @@ class ApplicationController < ActionController::API
 
   def correct_user
     render json: { message: 'Unauthorized' },
-           status: :unauthorized unless (logged_in? == User.find(params[:user_id]) || logged_in?.isadmin)
+           status: :unauthorized unless (logged_in? == User.find(params[:user_id]) || logged_in?.is_admin)
   end
 
   def isadmin?
     render json: { message: 'Unauthorized' },
-           status: :unauthorized unless logged_in?.isadmin
+           status: :unauthorized unless logged_in?.is_admin
   end
 
 end
